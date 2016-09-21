@@ -1,0 +1,53 @@
+#!/usr/bin/php
+#!/usr/bin/php
+<?php
+
+function print_usage() {
+	echo "Usage: {$_SERVER['argv'][0]} [options...] output.json" . PHP_EOL;
+	echo PHP_EOL;
+
+	echo "Valid options are:" . PHP_EOL;
+	echo "\t--with-user         Include git user" . PHP_EOL;
+	echo "\t--with-timestamp    Include current timestamp" . PHP_EOL;
+}
+
+function exec_git($args) {
+	exec('git ' . $args, $output);
+	return implode(PHP_EOL, $output);
+}
+
+if (in_array('--help', $argv, TRUE) || in_array('-h', $argv, TRUE)) {
+	print_usage();
+	return;
+}
+
+$argv = $_SERVER['argv'];
+$withUser = in_array('--with-user', $argv, TRUE);
+$withTimestamp = in_array('--with-timestamp', $argv, TRUE);
+
+$argv = array_values(array_diff($argv, [
+	'--with-user', '--with-timestamp'
+]));
+
+if (count($argv) !== 2 || empty($argv[1]) || $argv[1][0] === '-') {
+	print_usage();
+	exit;
+}
+
+$outputFile = array_pop($argv);
+
+$output = [
+	'commitId' => exec_git('log --format="%H" -n 1'),
+	'branchName' => exec_git('rev-parse --abbrev-ref HEAD'),
+];
+
+if ($withUser) {
+	$output['userName'] = exec_git('config user.name');
+	$output['userEmail'] = exec_git('config user.email');
+}
+
+if ($withTimestamp) {
+	$output['timestamp'] = time();
+}
+
+file_put_contents($outputFile, json_encode($output));

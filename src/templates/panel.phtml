@@ -1,0 +1,47 @@
+<?php
+
+namespace Tracy;
+
+$info = array_filter([
+	'Commit ID' => $this->gitInfo->commitId,
+	'Branch name' => $this->gitInfo->branchName,
+	'Timestamp' => !empty($this->gitInfo->timestamp) ? \Nette\Utils\DateTime::from($this->gitInfo->timestamp) : NULL,
+	'User' => implode(' ', array_filter([
+		!empty($this->gitInfo->userName)
+			? $this->gitInfo->userName
+			: NULL,
+		!empty($this->gitInfo->userEmail)
+			? '<' . $this->gitInfo->userEmail . '>'
+			: NULL,
+	])),
+]);
+
+?>
+<style class="tracy-debug">
+	#tracy-debug .tracy-GitPanel td {
+		white-space: nowrap;
+	}
+	#tracy-debug .tracy-GitPanel td:nth-child(2) {
+		font-weight: bold;
+	}
+	#tracy-debug .tracy-GitPanel td[colspan='2'] b {
+		float: right;
+		margin-left: 2em;
+	}
+</style>
+
+<h1>Git</h1>
+
+<div class="tracy-inner tracy-GitPanel">
+	<table>
+		<?php foreach ($info as $key => $val): ?>
+			<tr>
+				<?php if (iconv_strlen($val, 'UTF-8') > 25): ?>
+					<td colspan=2><?= Helpers::escapeHtml($key) ?> <b><?= Helpers::escapeHtml($val) ?></b></td>
+				<?php else: ?>
+					<td><?= Helpers::escapeHtml($key) ?></td><td><?= Helpers::escapeHtml($val) ?></td>
+				<?php endif ?>
+			</tr>
+		<?php endforeach ?>
+	</table>
+</div>

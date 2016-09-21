@@ -13,5 +13,9 @@
     "require": {},
     "require-dev": {
         "nette/nette": "^2.4"
-    }
+    },
+    "autoload": {
+        "psr-4": {"ADT\\TracyGit\\": "src/"}
+    },
+    "bin": [ "src/bin/tracy-git-json" ]
 }
