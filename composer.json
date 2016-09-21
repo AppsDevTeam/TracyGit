@@ -1,0 +1,17 @@
+{
+    "name": "appsdevteam/tracy-git",
+    "description": "Git commit info for Tracy panel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "AppsDevTeam",
+            "email": "hello@appsdevteam.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "require-dev": {
+        "nette/nette": "^2.4"
+    }
+}
