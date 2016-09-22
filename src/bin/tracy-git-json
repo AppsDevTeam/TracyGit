@@ -15,12 +15,12 @@ function exec_git($args) {
 	return implode(PHP_EOL, $output);
 }
 
+$argv = $_SERVER['argv'];
 if (in_array('--help', $argv, TRUE) || in_array('-h', $argv, TRUE)) {
 	print_usage();
 	return;
 }
 
-$argv = $_SERVER['argv'];
 $withUser = in_array('--with-user', $argv, TRUE);
 $withTimestamp = in_array('--with-timestamp', $argv, TRUE);
 
