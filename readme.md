@@ -33,5 +33,21 @@ Currently supported providers are:
 run `vendor/bin/tracy-git-json app/git.json`
 
 - use `-h` or `--help` to display usage,
-- use `--with-user` to include git user,
+- use `--with-user` to include current git user,
 - use `--with-timestamp` to include current timestamp
+
+### Auto update
+
+Most deploy systems have list of commands to execute before actual deploy takes place.
+
+Eg. for `dg/ftp-deployment` and JSON provider:
+
+1. ini config
+```ini
+before[] = local: vendor/bin/tracy-git-json app/git.json --with-user
+```
+
+2. php config
+```php
+$before[] = 'local: vendor/bin/tracy-git-json app/git.json --with-user';
+```
