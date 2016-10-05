@@ -1,5 +1,5 @@
 {
-    "name": "appsdevteam/tracy-git",
+    "name": "adt/tracy-git",
     "description": "Git commit info for Tracy panel",
     "type": "library",
     "license": "MIT",

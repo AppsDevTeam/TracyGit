@@ -8,7 +8,7 @@ Useful for displaying information about currently deployed application version.
 
 Composer:
 ```sh
-composer require appsdevteam/tracy-git
+composer require adt/tracy-git
 ```
 
 config.neon:
