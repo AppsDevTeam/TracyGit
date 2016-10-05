@@ -43,10 +43,10 @@ Most deploy systems have list of commands to execute before actual deploy takes 
 Eg. for `dg/ftp-deployment` and JSON provider:
 
 1. ini config
-```ini
-before[] = local: vendor/bin/tracy-git-json app/git.json --with-user
-```
+	```ini
+	before[] = local: vendor/bin/tracy-git-json app/git.json --with-user
+	```
 2. php config
-```php
-$before[] = 'local: vendor/bin/tracy-git-json app/git.json --with-user';
-```
+	```php
+	$before[] = 'local: vendor/bin/tracy-git-json app/git.json --with-user';
+	```
