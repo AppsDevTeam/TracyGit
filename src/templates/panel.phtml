@@ -5,8 +5,8 @@ namespace Tracy;
 $info = array_filter([
 	'Commit ID' => $this->gitInfo->commitId,
 	'Branch name' => $this->gitInfo->branchName,
-	'Timestamp' => !empty($this->gitInfo->timestamp) ? \Nette\Utils\DateTime::from($this->gitInfo->timestamp) : NULL,
-	'User' => implode(' ', array_filter([
+	'Deployed at' => !empty($this->gitInfo->timestamp) ? \Nette\Utils\DateTime::from($this->gitInfo->timestamp) : NULL,
+	'Deployed by' => implode(' ', array_filter([
 		!empty($this->gitInfo->userName)
 			? $this->gitInfo->userName
 			: NULL,
