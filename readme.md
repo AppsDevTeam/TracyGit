@@ -46,7 +46,6 @@ Eg. for `dg/ftp-deployment` and JSON provider:
 ```ini
 before[] = local: vendor/bin/tracy-git-json app/git.json --with-user
 ```
-
 2. php config
 ```php
 $before[] = 'local: vendor/bin/tracy-git-json app/git.json --with-user';
