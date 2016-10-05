@@ -26,8 +26,8 @@ class TracyGitExtension extends \Nette\DI\CompilerExtension {
 
 		switch ($provider) {
 			case static::PROVIDER_JSON:
-				if (empty($config['file']) || !file_exists($config['file'])) {
-					throw new TracyGitException('JSON provider must have existing file specified');
+				if (empty($config['file'])) {
+					throw new TracyGitException('JSON provider must have file specified');
 				}
 				break;
 		}

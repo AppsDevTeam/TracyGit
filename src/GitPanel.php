@@ -28,7 +28,9 @@ class GitPanel implements \Tracy\IBarPanel {
 	private function getGitInfo($config) {
 		switch ($config['provider']) {
 			case DI\TracyGitExtension::PROVIDER_JSON:
-				return \Nette\Utils\Json::decode(file_get_contents($config['file']));
+				return file_exists($config['file'])
+					? \Nette\Utils\Json::decode(file_get_contents($config['file']))
+					: NULL;
 
 			default:
 				throw new DI\TracyGitException('Unknown provider specified');
