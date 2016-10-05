@@ -1,7 +1,5 @@
 <?php
 
-namespace Tracy;
-
 $info = $this->gitInfo
 	? array_filter([
 		'Commit ID' => $this->gitInfo->commitId,
@@ -42,10 +40,10 @@ $info = $this->gitInfo
 			<?php foreach ($info as $key => $val): ?>
 				<tr>
 					<?php if (iconv_strlen($val, 'UTF-8') > 25): ?>
-						<td colspan=2><?= Helpers::escapeHtml($key) ?> <b><?= Helpers::escapeHtml($val) ?></b></td>
+						<td colspan=2><?= htmlspecialchars($key) ?> <b><?= htmlspecialchars($val) ?></b></td>
 					<?php else: ?>
-						<td><?= Helpers::escapeHtml($key) ?></td>
-						<td><?= Helpers::escapeHtml($val) ?></td>
+						<td><?= htmlspecialchars($key) ?></td>
+						<td><?= htmlspecialchars($val) ?></td>
 					<?php endif ?>
 				</tr>
 			<?php endforeach ?>
