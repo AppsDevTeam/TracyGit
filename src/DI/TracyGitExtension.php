@@ -35,7 +35,7 @@ class TracyGitExtension extends \Nette\DI\CompilerExtension {
 
 	public function afterCompile(Nette\PhpGenerator\ClassType $class) {
 		$initMethod = $class->methods['initialize'];
-		$initMethod->addBody('$this->getService(?)->addPanel(new ' . \ADT\TracyGit\GitPanel::class . '(?));', [ 'tracy.bar', $this->config ]);
+		$initMethod->addBody('$this->getService(?)->addPanel(new ' . \ADT\TracyGit\GitPanel::class . '(new ' . \ADT\TracyGit\Git::class . '(?)));', [ 'tracy.bar', $this->config ]);
 	}
 
 

@@ -6,8 +6,8 @@ class GitPanel implements \Tracy\IBarPanel {
 
 	protected $gitInfo;
 
-	public function __construct($config) {
-		$this->gitInfo = $this->getGitInfo($config);
+	public function __construct(Git $git) {
+		$this->gitInfo = $git->getInfo();
 	}
 
 	public function getTab() {
@@ -25,15 +25,4 @@ class GitPanel implements \Tracy\IBarPanel {
 		return ob_get_clean();
 	}
 
-	private function getGitInfo($config) {
-		switch ($config['provider']) {
-			case DI\TracyGitExtension::PROVIDER_JSON:
-				return file_exists($config['file'])
-					? \Nette\Utils\Json::decode(file_get_contents($config['file']))
-					: NULL;
-
-			default:
-				throw new DI\TracyGitException('Unknown provider specified');
-		}
-	}
 }
