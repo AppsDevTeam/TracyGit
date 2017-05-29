@@ -36,6 +36,8 @@ run `vendor/bin/tracy-git-json app/git.json`
 - use `--with-user` to include current git user,
 - use `--with-timestamp` to include current timestamp
 
+Note: do not forget do add `app/git.json` to your `.gitignore`.
+
 ### Auto update
 
 Most deploy systems have list of commands to execute before actual deploy takes place.
