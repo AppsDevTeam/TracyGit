@@ -4,6 +4,7 @@ $info = $this->gitInfo
 	? array_filter([
 		'Commit ID' => $this->gitInfo->commitId,
 		'Branch name' => $this->gitInfo->branchName,
+		'Tag' => $this->gitInfo->tag,
 		'Deployed at' => !empty($this->gitInfo->timestamp) ? \Nette\Utils\DateTime::from($this->gitInfo->timestamp) : NULL,
 		'Deployed by' => implode(' ', array_filter([
 			!empty($this->gitInfo->userName)
