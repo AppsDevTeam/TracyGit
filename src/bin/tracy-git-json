@@ -23,9 +23,10 @@ if (in_array('--help', $argv, TRUE) || in_array('-h', $argv, TRUE)) {
 
 $withUser = in_array('--with-user', $argv, TRUE);
 $withTimestamp = in_array('--with-timestamp', $argv, TRUE);
+$withCount = in_array('--with-count', $argv, TRUE);
 
 $argv = array_values(array_diff($argv, [
-	'--with-user', '--with-timestamp'
+	'--with-user', '--with-timestamp', '--with-count'
 ]));
 
 if (count($argv) !== 2 || empty($argv[1]) || $argv[1][0] === '-') {
@@ -49,6 +50,10 @@ if ($withUser) {
 
 if ($withTimestamp) {
 	$output['timestamp'] = time();
+}
+
+if ($withCount) {
+	$output['commitCount'] = exec_git('rev-list --count HEAD');
 }
 
 file_put_contents($outputFile, json_encode($output));
