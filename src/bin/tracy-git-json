@@ -39,7 +39,7 @@ $outputFile = array_pop($argv);
 $output = [
 	'commitId' => exec_git('log --format="%H" -n 1'),
 	'branchName' => exec_git('rev-parse --abbrev-ref HEAD'),
-	'tag' => exec_git('describe --tags'),
+	'tag' => exec_git('describe --tags --always'),
 	'commit' => exec_git('log -1 --pretty=%B'),
 ];
 
