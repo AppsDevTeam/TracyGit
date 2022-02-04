@@ -1,3 +1,8 @@
+
+## DEPRECATED
+
+See https://github.com/AppsDevTeam/tracy-system-info
+
 # Tracy Git panel
 
 Useful for displaying information about currently deployed application version.
